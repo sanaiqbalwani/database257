@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<title>Owner Sign Up Form</title>
+		<meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<div class="container-fluid">
+
+			<div class="row">
+
+				<div class="col-md-4">
+
+					<h1>Sign up!</h1>
+
+		<form method="POST" action="/sign_up">
+
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input id="email" name="email" class="form-control" type="text" /><br />
+
+				<label for="password">Password</label>
+				<input class="form-control" id="password" type="password" name="password" /><br />
+
+				<label for="location">Location</label>
+				<select class="form-control" id="location" name="location">
+					<option value="NY">New York</option>
+					<option value="CA">California</option>
+					<option value="WA">Washington</option>
+				</select><br />
+
+				<textarea class="form-control" name="essay"></textarea>
+
+				<input type="submit" value="Submit now!" />
+			</div>
+		</form>
+	</div>
+
+	<!--
+	<div class="col-md-8">
+
+		<form>
+
+			<div class="form-group">
+				<label for="email">{{ name_of_email }}</label>
+				<input id="email" name="email" class="form-control" type="text" /><br />
+
+				<label for="password">Password</label>
+				<input class="form-control" id="password" type="password" name="password" /><br />
+
+				<label for="location">Location</label>
+				<select class="form-control" id="location" name="location">
+					<option value="NY">New York</option>
+					<option value="CA">California</option>
+					<option value="WA">Washington</option>
+				</select><br />
+
+				<textarea class="form-control" name="essay"></textarea>
+
+				<input type="submit" value="Submit now!" />
+			</div>
+		</form>
+	</div> -->
+	</div>
+</div>
+
+	</body>
+
+</html>
