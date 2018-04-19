@@ -1,27 +1,39 @@
-<html>
-	<head>
-		<title>Owner Sign Up Form</title>
-		<meta charset="utf-8">
-	  <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	</head>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
 
-	<body>
-		<div class="container-fluid">
+    <title>R</title>
 
-			<div class="row">
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+  </head>
+
+  	<body>
+		<!-- <div class="container-fluid"> -->
+
+			<!-- <div class="row"> -->
 
 				<div class="col-md-4">
 
-					<h1>Sign up As Owner</h1>
+					{% if message %}
+     				<h1 class="bg-success">{{ message }}<strong></strong>
+     				</h1>
+     				{% endif %}
 
-		<form method="POST" action="/sign_up_form_owner">
+
+		<form class="form-signin" method="POST" action="/sign_up_form_owner">
 
 			<div class="form-group">
-				<label for="email">Email</label>
-				<input id="email" name="email" class="form-control" type="text" /><br />
+				<label for="email_id">Email</label>
+				<input id="email_id" name="email_id" class="form-control" type="text" /><br />
 
 				<label for="password">Password</label>
 				<input class="form-control" id="password" type="password" name="password" /><br />
@@ -107,9 +119,10 @@
 				<input type="submit" value="Submit now!" />
 			</div>
 		</form>
+
 	</div>
-	</div>
-</div>
+<!-- 	</div>
+</div> -->
 
 	</body>
 
