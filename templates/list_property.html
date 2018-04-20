@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>list_property</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/dist/css/bootstrap.min.css" rel="stylesheet">
+     {% include 'header.html' %}
+  </head>
+    <body >
+
+		{% if message %}
+			<h1 class="bg-success">{{ message }}<strong></strong></h1>
+		{% endif %}
+
+		<div class="container container-table">
+
+
+		<form class="form-signin" method="POST" action="/sign_up">
+		<img class="mb-4" src="../static/images/house-for-rent.jpg" alt="" width="300" height="300">
+
+			<div class="form-group">
+			
+				<fieldset>
+			 	 <legend align="center" >List your property here.</legend>
+			 	 <label for="country">Country </label>
+			 	 <input id="country" name="country" class="form-control" type="text" required >
+
+			 	 <label for="state">State</label>
+			 	 <input id="state" name="state"class="form-control" type="text" required >
+
+			 	 <label for="city">City</label>
+			 	 <input id="city" name="city"class="form-control" type="text" required >
+
+			 	 <label for="street">Street</label>
+			 	 <input id="street" name="street"class="form-control" type="text" required >
+
+			 	 <label for="zip_code">Zip Code</label>
+			 	 <input id="zip_code" name="zip_code"class="form-control" type="number"required >
+
+			 	 <label for="longitude">Longitude</label>
+			 	 <input id="longitude" name="longitude" class="form-control" type="number" required >
+
+			 	 <label for="latitude">Latitude</label>
+			 	 <input id="latitude" name="latitude" class="form-control" type="number" required >
+			 	</fieldset>
+
+				<label for="property_type" align="center" >Property Type</label>
+				<select class="form-control" id="property_type" name="property_type" required >
+					<option value="House">House</option>
+					<option value="Condo">Condo</option>
+					<option value="Apartment">Apartment</option>
+					<option value="Room">Room</option>
+				</select><br />
+
+
+			 	<label for="rate">Rate Per Day per Person</label>
+			 	<input id="rate" name="rate" class="form-control" type="number" required >
+
+				<label for="room_type">Room Type</label>
+				<select class="form-control" id="room_type" name="room_type">
+					<option value="Shared">Shared</option>
+					<option value="Individual">Individual</option>
+				</select><br />
+
+				<label for="bed_type">Bed Type</label>
+				<select class="form-control" id="bed_type" name="bed_type">
+					<option value="Futon">Futon</option>
+					<option value="Single">Single</option>
+					<option value="Twin">Twin</option>
+					<option value="Queen">Queen</option>
+					<option value="King">King</option>
+					<option value="Air Mattress">Air Mattress</option>
+				</select><br />
+
+				<label for="no_bathrooms">Number of Bathrooms</label>
+				<input type="number" value="1" min="1" max="10" id="no_bathrooms" name="no_bathrooms" class="form-control" required >
+				
+				<label for="no_bedrooms">Number of Bedrooms</label>
+				<input type="number" value="1" min="1" max="10" id="no_bedrooms" name="no_bedrooms" class="form-control" required >
+
+				<label for="minimum_stay">Minimum Stay at your property </label>
+				<input type="number" value="1" min="1" max="10" id="minimum_stay" name="minimum_stay" class="form-control" required >
+
+				<label for="capacity">Capacity of the property</label>
+				<input type="number" value="1" min="1" max="10" id='capacity'name="capacity" class="form-control" required >
+
+			<!-- 	<input type="submit" value="Submit now!" /> -->
+
+			 <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+			</div>
+			{% include 'footer.html' %}
+		</form>
+
+		<div/>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('render_home') }}">Home</a>
+          </li>
+         
+          <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('list_property')}}">List-Your-Property </a>
+          </li>
+           <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('search_property')}}">Search-Property </a>
+          </li>
+            </div>
+          <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('log_in_render') }}"> Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('sign_up_render') }}"> Sign Up</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+</html>
