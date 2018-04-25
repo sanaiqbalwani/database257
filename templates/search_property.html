@@ -1,6 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
+
 <!doctype html>
 <html lang="en">
 
@@ -22,80 +20,167 @@
         <img class="mb-4" src="../static/images/house-for-rent.jpg" alt="" width="300" height="300">
 
             <div class="form-group">
-            
+
                 <fieldset>
-                 <legend align="center" >Search any property here.</legend>
-                 <label for="country">Country </label>
-                 <input id="country" name="country" class="form-control" type="text" required >
+                <font size="+3"><b><strong>Location Choice</b></strong></font>
+                <fieldset>
+                <br />
 
-                 <label for="state">State</label>
-                 <input id="state" name="state"class="form-control" type="text" required >
+                <table style="width:100%">
+                    <tr>
+                        <th>
+                            <label for="country">Country</label>
+                            <select class="form-control" id="country" name="country">
+                            <option value="Netherlands">Netherlands</option>
+                            </select />
+                        </th>
+                        <th>
+                            <label for="state">State</label>
+                            <select class="form-control" id="state" name="state">
+                            <option value="NH">NH</option>
+                            <option value="AH">AH</option>
+                            <option value="DP">DP</option>
+                            </select />
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="city">City</label>
+                            <select class="form-control" id="city" name="city">
+                            <option value="Amsterdam">Amsterdam</option>
+                            <option value="Duivendrecht">Duivendrecht</option>
+                            <option value="Jordaan">Jordaan</option>
+                            <option value="Watergraafsmeer">Watergraafsmeer</option>
+                            </select />
+                        </th>
+                        <th>
+                            <label for="street">Street</label>
+                            <input id="street" name="street"class="form-control" type="text">
+                        </th>
+                    </tr>
+                </table>
+                <br /><br />
 
-                 <label for="city">City</label>
-                 <input id="city" name="city"class="form-control" type="text" required >
-
-                 <label for="street">Street</label>
-                 <input id="street" name="street"class="form-control" type="text" required >
-
-                 <label for="zip_code">Zip Code</label>
-                 <input id="zip_code" name="zip_code"class="form-control" type="number"required >
-
-                 <label for="longitude">Longitude</label>
-                 <input id="longitude" name="longitude" class="form-control" type="number" required >
-
-                 <label for="latitude">Latitude</label>
-                 <input id="latitude" name="latitude" class="form-control" type="number" required >
+                 
+                <fieldset>
+                <font size="+3"><b><strong>Property Choice</b></strong></font>
                 </fieldset>
+                <br />
 
-                <label for="property_type" align="center" >Property Type</label>
-                <select class="form-control" id="property_type" name="property_type" required >
-                    <option value="House">House</option>
-                    <option value="Condo">Condo</option>
-                    <option value="Apartment">Apartment</option>
-                    <option value="Room">Room</option>
-                </select><br />
-
-
-                <label for="rate">Rate Per Day per Person</label>
-                <input id="rate" name="rate" class="form-control" type="number" required >
-
-                <label for="room_type">Room Type</label>
-                <select class="form-control" id="room_type" name="room_type">
-                    <option value="Shared">Shared</option>
-                    <option value="Individual">Individual</option>
-                </select><br />
-
-                <label for="bed_type">Bed Type</label>
-                <select class="form-control" id="bed_type" name="bed_type">
-                    <option value="Futon">Futon</option>
-                    <option value="Single">Single</option>
-                    <option value="Twin">Twin</option>
-                    <option value="Queen">Queen</option>
-                    <option value="King">King</option>
-                    <option value="Air Mattress">Air Mattress</option>
-                </select><br />
-
-                <label for="no_bathrooms">Number of Bathrooms</label>
-                <input type="number" value="1" min="1" max="10" id="no_bathrooms" name="no_bathrooms" class="form-control" required >
-                
-                <label for="no_bedrooms">Number of Bedrooms</label>
-                <input type="number" value="1" min="1" max="10" id="no_bedrooms" name="no_bedrooms" class="form-control" required >
-
-                <label for="minimum_stay">Minimum Stay at your property </label>
-                <input type="number" value="1" min="1" max="10" id="minimum_stay" name="minimum_stay" class="form-control" required >
-
-                <label for="capacity">Capacity of the property</label>
-                <input type="number" value="1" min="1" max="10" id='capacity'name="capacity" class="form-control" required >
-
-            <!--    <input type="submit" value="Submit now!" /> -->
+                <table style="width:100%">
+                    <tr>
+                        <th>
+                            <label for="property_type" align="center" >Property Type</label>
+                            <select class="form-control" id="property_type" name="property_type">
+                                <option value="House">House</option>
+                                <option value="Cabin">Cabin</option>
+                                <option value="Apartment">Apartment</option>
+                                <option value="Bungalow">Bungalow</option>
+                            </select>
+                        </th>
+                        <th>
+                            <label for="rate">Rate Per Day per Person</label>
+                            <select class="form-control" id="rate" name="rate" type="range">
+                                <option type="range" min="0" max="50" >0~50</option>
+                                <option type="range" min="51" max="100">51~100</option>
+                                <option type="range" min="101" max="150">101~150</option>
+                                <option type="range" min="151" >>151</option>
+                            </select>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="room_type">Room Type</label>
+                            <select class="form-control" id="room_type" name="room_type">
+                                <option value="Shared">Shared room</option>
+                                <option value="Private">Private room</option>
+                                <option value="Entire home/apt">Entire home/apt</option>
+                        </th>
+                        <th>
+                            <label for="bed_type">Bed Type</label>
+                            <select class="form-control" id="bed_type" name="bed_type">
+                                <option value="Real bed">Real bed</option>
+                                <option value="Pull-out Sofa">Pull-out Sofa</option>
+                                <option value="Futon">Futon</option>
+                                <option value="Airbed">Airbed</option>
+                                <option value="Couch">Couch</option>
+                            </select>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="no_bathrooms">Number of Bathrooms</label>
+                            <input type="number" value="1" min="1" max="10" id="no_bathrooms" name="no_bathrooms" class="form-control">
+                        </th>
+                        <th>
+                           <label for="no_bedrooms">Number of Bedrooms</label>
+                            <input type="number" value="1" min="1" max="10" id="no_bedrooms" name="no_bedrooms" class="form-control">
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="minimum_stay">Minimum Stay at your property </label>
+                            <input type="number" value="1" min="1" max="10" id="minimum_stay" name="minimum_stay" class="form-control">
+                        </th>
+                        <th>
+                           <label for="capacity">Capacity of the property</label>
+                            <input type="number" value="1" min="1" max="10" id='capacity'name="capacity" class="form-control">
+                        </th>
+                    </tr>  
+                </table>
+                <br /><br />
 
              <button class="btn btn-lg btn-primary btn-block" type="submit">Search</button>
+             <br /><br />
             </div>
-            {% include 'footer.html' %}
-        </form>
-
         <div/>
 
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1><b><strong>Search Result</b></strong></h1>
+                    <br />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table">
+                        <tr>
+                            <th>Property ID</th>
+                            <th>Property Type</th>
+                            <th>Capacity</th>
+                            <th>Minimun Stay</th>
+                            <th>No. of bathrooms</th>
+                            <th>No. of bedrooms</th>
+                            <th>Bed Type</th>
+                            <th>Room Type</th>
+                            <th>Rate</th>
+                            <th>Host ID</th>
+                        </tr>
+                        
+                        {% for colum in colums %}
+                            <tr>
+                                <td>{{ column[1] }}</td>
+                                <td>{{ column[2] }}</td>
+                                <td>{{ column[3] }}</td>
+                                <td>{{ column[4] }}</td>
+                                <td>{{ column[5] }}</td>
+                                <td>{{ column[6] }}</td>
+                                <td>{{ column[7] }}</td>
+                                <td>{{ column[8] }}</td>
+                                <td>{{ column[9] }}</td>
+                                <td>{{ column[10] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+            {% include 'footer.html' %}
+        </form>
 </body>
 
 </html>
