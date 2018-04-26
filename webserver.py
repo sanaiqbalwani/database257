@@ -121,7 +121,7 @@ def list_property_render():
 def list_property():
 # 1. get all id in class form-group from the html instead of writing all of them
 # 2. get values of fields from form
-    html_soup = BeautifulSoup(open("list_property.html"), 'html.parser')
+    html_soup = BeautifulSoup(open("templates/list_property.html"), 'html.parser')
     body=html_soup.find('body')
     formsoup=body.find('form')
     form_group=formsoup.find('div',class_='form-group')
@@ -129,10 +129,18 @@ def list_property():
     for input_entry in form_group.find_all('input',class_='form-control'):
         name = input_entry.get('id')
         d[name]=request.form[name]
+    d["rate"]=float(d["rate"])
+
+    d["property_type"]=request.form["property_type"]
+    d["bed_type"]=request.form["bed_type"]
+    d["room_type"]=request.form["room_type"]
+
 
 
 # allow dot notation in dict above 
     d = DotMap(d)
+    print(d)
+
 
 # 3. Populate tables
     connection = sqlite3.connect('user.db')
@@ -141,8 +149,13 @@ def list_property():
     host_id=int(1111111) #filler
     # host_id=c.execute("""SELECT host_id FROM owner WHERE firstname=? AND lastname=?""",(d.firstname,d.lastname))
     # host_id=host_id.fetchone()[0]
-    c.execute(""" INSERT INTO location (latitude,longitude,country,state,city,street,zip_code,host_id)
-        VALUES (?, ?, ?, ?,?,?,?,?)""", [d.latitude,d.longitude,d.country,d.state,d.city,d.street,d.zip_code,host_id])
+    c.execute(""" INSERT INTO location (country,state,city,street,zip_code,host_id)
+        VALUES (?, ?, ?, ?,?,?)""", [d.country,d.state,d.city,d.street,d.zip_code,host_id])
+    # c.execute("""SET @last_id = LAST_INSERT_ID()""")
+    property_id=int(c.lastrowid)
+    print(type(property_id))
+    c.execute(""" INSERT INTO property (property_id,property_type,rate,room_type,bed_type,no_bathrooms,no_beds,minimum_stay,capacity)
+    VALUES (?, ?, ?, ?,?,?,?,?,?)""", [property_id,d.property_type,d.rate,d.room_type,d.bed_type,d.no_bathrooms,d.no_beds,d.minimum_stay,d.capacity])
 
     connection.commit()
 
@@ -203,36 +216,49 @@ def search_property_render():
     message=None
     return render_template("search_property.html",message=message)
 
-@app.route("/search_property", methods=["POST"])
+@app.route("/search_property", methods=["GET","POST"])
 def search_property():
 
-    state = form.request['state']
-    city = form.request['city']
-    street = form.request['street']
-    property_type = form.request['property_type']
-    room_type = form.request['room_type']
-    bed_type = form.request['bed_type']
-    no_bathrooms = form.request['no_bathrooms']
-    no_bedrooms = form.request['no_bedrooms']
-    minimum_stay = form.request['minimum_stay']
-    capacity = form.request['capacity']
-    rate = form.request['rate']
-    connection = sqlite3.connect('user_6table.db')
+    state = request.form['state']
+    city = request.form['city']
+    street = request.form['street']
+    property_type = request.form['property_type']
+    room_type = request.form['room_type']
+    bed_type = request.form['bed_type']
+    no_bathrooms = request.form['no_bathrooms']
+    no_bedrooms = request.form['no_bedrooms']
+    minimum_stay = request.form['minimum_stay']
+    capacity = request.form['capacity']
+    rate = request.form['rate']
+    connection = sqlite3.connect('user.db')
     c = connection.cursor()
-    if street == '':
-        # select_stmt = "SELECT * FROM employees WHERE emp_no = %(emp_no)s"
-        # c.execute(select_stmt, {'emp_no': 2})
-        select_stmt = """ select * from property where property_id in 
-            (select property_id from location where state=%(state)s and city=%(city)s and street=%(street)s) """
-        c.execute(select_stmt, {'state': state, 'city': city})
-        c.commit()
-    else:
-        select_stmt = """ select * from property where property_id in 
-                   (select property_id from location where state=%(state)s and city=%(city)s) """
-        c.execute(select_stmt, {'state': state, 'city': city, 'street': street})
-        c.commit()
+    # if street != '':
+    #     # select_stmt = "SELECT * FROM employees WHERE emp_no = %(emp_no)s"
+    #     # c.execute(select_stmt, {'emp_no': 2})
+    #     # ---------
+    #     c.execute(""" SELECT * FROM property  WHERE property_id IN
+    #      (SELECT property_id FROM location WHERE state= ? and city= ?and street=?)""",[state,city,street])
+     
+
+
+    #     # ---------
+    #     # select_stmt = """ select * from property where property_id in 
+    #     #     (select property_id from location where state=%(state)s and city=%(city)s and street=%(street)s) """
+    #     # c.execute(select_stmt, {'state': state, 'city': city})
+    #     rows = c.fetchall()
+    #     connection.commit()
+    # else:
+    c.execute(""" SELECT * FROM property  WHERE property_id IN
+     (SELECT property_id FROM location WHERE state= ? and city= ?)""",(state,city,))
+
+    # select_stmt = """ select * from property where property_id in 
+    #            (select property_id from location where state=%(state)s and city=%(city)s) """
+    # c.execute(select_stmt, {'state': state, 'city': city, 'street': street})
     rows = c.fetchall()
-    return render_template("search_property.html", **locals())
+    connection.commit()
+  
+    print (rows,state, city, street)
+    return render_template("search_property.html", colums=rows)#**locals())
 
 
 

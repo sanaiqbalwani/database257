@@ -8,23 +8,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
     <title>list_property</title>
+
 
     <!-- Bootstrap core CSS -->
     <link href="../static/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="../static/css/signin.css" rel="stylesheet"> -->
      {% include 'header.html' %}
   </head>
     <body >
 
-		{% if message %}
-			<h1 class="bg-success">{{ message }}<strong></strong></h1>
-		{% endif %}
+
 
 		<div class="container container-table">
 
 
-		<form class="form-signin" method="POST" action="/sign_up">
+		<form class="form-signin" method="POST" action="/list_property" style="height: 100px; padding-top: 10rem;">
+		{% if message %}
+			<h1 class="bg-success">{{ message }}<strong></strong></h1>
+		{% endif %}
 		<img class="mb-4" src="../static/images/house-for-rent.jpg" alt="" width="300" height="300">
+
 
 			<div class="form-group">
 			
@@ -45,13 +50,6 @@
 			 	 <label for="zip_code">Zip Code</label>
 			 	 <input id="zip_code" name="zip_code"class="form-control" type="number"required >
 
-			 	 <label for="longitude">Longitude</label>
-			 	 <input id="longitude" name="longitude" class="form-control" type="number" required >
-
-			 	 <label for="latitude">Latitude</label>
-			 	 <input id="latitude" name="latitude" class="form-control" type="number" required >
-			 	</fieldset>
-
 				<label for="property_type" align="center" >Property Type</label>
 				<select class="form-control" id="property_type" name="property_type" required >
 					<option value="House">House</option>
@@ -65,13 +63,13 @@
 			 	<input id="rate" name="rate" class="form-control" type="number" required >
 
 				<label for="room_type">Room Type</label>
-				<select class="form-control" id="room_type" name="room_type">
+				<select class="form-control" id="room_type" name="room_type" required>
 					<option value="Shared">Shared</option>
 					<option value="Individual">Individual</option>
 				</select><br />
 
 				<label for="bed_type">Bed Type</label>
-				<select class="form-control" id="bed_type" name="bed_type">
+				<select class="form-control" id="bed_type" name="bed_type" required>
 					<option value="Futon">Futon</option>
 					<option value="Single">Single</option>
 					<option value="Twin">Twin</option>
@@ -83,8 +81,8 @@
 				<label for="no_bathrooms">Number of Bathrooms</label>
 				<input type="number" value="1" min="1" max="10" id="no_bathrooms" name="no_bathrooms" class="form-control" required >
 				
-				<label for="no_bedrooms">Number of Bedrooms</label>
-				<input type="number" value="1" min="1" max="10" id="no_bedrooms" name="no_bedrooms" class="form-control" required >
+				<label for="no_beds">Number of Bedrooms</label>
+				<input type="number" value="1" min="1" max="10" id="no_beds" name="no_beds" class="form-control" required >
 
 				<label for="minimum_stay">Minimum Stay at your property </label>
 				<input type="number" value="1" min="1" max="10" id="minimum_stay" name="minimum_stay" class="form-control" required >

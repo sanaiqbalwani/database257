@@ -16,7 +16,7 @@
 
         <div class="container container-table">
 
-        <form class="form-signin" method="POST" action="/sign_up">
+        <form class="form-signin" method="POST" action="/search_property">
         <img class="mb-4" src="../static/images/house-for-rent.jpg" alt="" width="300" height="300">
 
             <div class="form-group">
@@ -156,11 +156,13 @@
                             <th>Bed Type</th>
                             <th>Room Type</th>
                             <th>Rate</th>
-                            <th>Host ID</th>
+
                         </tr>
                         
-                        {% for colum in colums %}
+                        {% for column in colums %}
+                       <!--  <h1> {{colums}}</h1> -->
                             <tr>
+                                <td>{{ column[0] }}</td>
                                 <td>{{ column[1] }}</td>
                                 <td>{{ column[2] }}</td>
                                 <td>{{ column[3] }}</td>
