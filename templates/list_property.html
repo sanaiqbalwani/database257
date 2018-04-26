@@ -34,28 +34,39 @@
 			<div class="form-group">
 			
 				<fieldset>
-			 	 <legend align="center" >List your property here.</legend>
-			 	 <label for="country">Country </label>
-			 	 <input id="country" name="country" class="form-control" type="text" required >
+			 	<legend align="center" >List your property here.</legend>
+			 	<label for="country">Country</label>
+                <select class="form-control" id="country" type= "text" name="country" required >
+                <option value="Netherlands">Netherlands</option>
+                </select />
 
 			 	 <label for="state">State</label>
-			 	 <input id="state" name="state"class="form-control" type="text" required >
+                <select class="form-control" id="state" name="state" required>
+                <option value="NH">NH</option>
+                <option value="AH">AH</option>
+                <option value="DP">DP</option>
+                </select />
 
-			 	 <label for="city">City</label>
-			 	 <input id="city" name="city"class="form-control" type="text" required >
+			 	<label for="city">City</label>
+                <select class="form-control" id="city" name="city">
+                <option value="Amsterdam">Amsterdam</option>
+                <option value="Duivendrecht">Duivendrecht</option>
+                <option value="Jordaan">Jordaan</option>
+                <option value="Watergraafsmeer">Watergraafsmeer</option>
+                </select />
 
 			 	 <label for="street">Street</label>
-			 	 <input id="street" name="street"class="form-control" type="text" required >
+			 	 <input id="street" name="street"class="form-control" type="text" >
 
 			 	 <label for="zip_code">Zip Code</label>
-			 	 <input id="zip_code" name="zip_code"class="form-control" type="number"required >
+			 	 <input id="zip_code" name="zip_code"class="form-control" type="text">
 
 				<label for="property_type" align="center" >Property Type</label>
 				<select class="form-control" id="property_type" name="property_type" required >
 					<option value="House">House</option>
-					<option value="Condo">Condo</option>
-					<option value="Apartment">Apartment</option>
-					<option value="Room">Room</option>
+                    <option value="Cabin">Cabin</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Dorm">Dorm</option>
 				</select><br />
 
 
@@ -64,18 +75,18 @@
 
 				<label for="room_type">Room Type</label>
 				<select class="form-control" id="room_type" name="room_type" required>
-					<option value="Shared">Shared</option>
-					<option value="Individual">Individual</option>
+		         <option value="Shared">Shared room</option>
+	             <option value="Private">Private room</option>
+	             <option value="Entire home/apt">Entire home/apt</option>
 				</select><br />
 
 				<label for="bed_type">Bed Type</label>
 				<select class="form-control" id="bed_type" name="bed_type" required>
-					<option value="Futon">Futon</option>
-					<option value="Single">Single</option>
-					<option value="Twin">Twin</option>
-					<option value="Queen">Queen</option>
-					<option value="King">King</option>
-					<option value="Air Mattress">Air Mattress</option>
+					<option value="Real bed">Real bed</option>
+                    <option value="Pull-out Sofa">Pull-out Sofa</option>
+                    <option value="Futon">Futon</option>
+                    <option value="Airbed">Airbed</option>
+                    <option value="Couch">Couch</option>
 				</select><br />
 
 				<label for="no_bathrooms">Number of Bathrooms</label>

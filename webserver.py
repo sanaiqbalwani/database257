@@ -24,7 +24,7 @@ def create_tables():
                 state text NOT NULL,
                 city text NOT NULL,
                 street text ,
-                zip_code integer NOT NULL,
+                zip_code text,
                 host_id integer 
             );""")
 
@@ -43,7 +43,7 @@ def create_tables():
             property_type text NOT NULL, 
             capacity  integer NOT NULL, 
             minimum_stay integer NOT NULL,
-            no_bathrooms integer NOT NULL,
+            no_bathrooms float NOT NULL,
             no_beds integer NOT NULL,
             bed_type text NOT NULL,
             room_type text NOT NULL,
@@ -134,6 +134,9 @@ def list_property():
     d["property_type"]=request.form["property_type"]
     d["bed_type"]=request.form["bed_type"]
     d["room_type"]=request.form["room_type"]
+    d["country"]=request.form["country"]
+    d["state"]=request.form["state"]
+    d["city"]=request.form["city"]
 
 
 
@@ -152,8 +155,8 @@ def list_property():
     c.execute(""" INSERT INTO location (country,state,city,street,zip_code,host_id)
         VALUES (?, ?, ?, ?,?,?)""", [d.country,d.state,d.city,d.street,d.zip_code,host_id])
     # c.execute("""SET @last_id = LAST_INSERT_ID()""")
-    property_id=int(c.lastrowid)
-    print(type(property_id))
+    property_id=c.lastrowid
+    # print(type(property_id))
     c.execute(""" INSERT INTO property (property_id,property_type,rate,room_type,bed_type,no_bathrooms,no_beds,minimum_stay,capacity)
     VALUES (?, ?, ?, ?,?,?,?,?,?)""", [property_id,d.property_type,d.rate,d.room_type,d.bed_type,d.no_bathrooms,d.no_beds,d.minimum_stay,d.capacity])
 
