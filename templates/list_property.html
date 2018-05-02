@@ -13,57 +13,55 @@
 
 
     <!-- Bootstrap core CSS -->
-    <link href="../static/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/dist/css/bootstrap.min.css" rel="stylesheet">ß
      {% include 'header.html' %}
   </head>
     <body >
 
+    	  <div style="background:transparent !important" class="jumbotron">
+            <img src="../static/images/ownerpage.png"  width=100% height=100%>
+        </div>
+
 		<div class="container container-table">
 
 
-		<form class="form-signin" method="POST" action="/list_property" style="height: 100px; padding-top: 10rem;">
+		<form class="form-signin" method="POST" action="/list_property" >
 		{% if message %}
 			<font size="+1"><h1 class="bg-success">{{ message }}<strong></strong></h1></font>
 		{% endif %}
-		<img class="mb-4" src="../static/images/house-for-rent.jpg" alt="" width="300" height="300">
-
 
 			<div class="form-group">
+				<legend align="center"><strong>Log in as Owner to list your property</strong></legend>
 				<fieldset>
-				<select class="form-control" id="user_type" name="user_type" required >
-		          <option value="owner">Owner</option>
-		          <option value="guest">Guest</option>
-		      	</select>
 
 		      	<label for="email">Email id</label>
-		        <input type="email" id="email" class="form-control" name="email" placeholder="Email address" required autofocus>
+		        <input type="email" id="email" class="form-control" name="email" placeholder="Owner Account Email"  required autofocus>
 
 		      	<label for="password">Password</label>
-      			<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+      			<input type="password" id="password" name="password" class="form-control" placeholder="Owner Account Password"  required>
      		
 				</fieldset>	
 			
 				<fieldset>
-			 	<legend align="center" >List your property here.</legend>
+			 	<legend align="center" ><strong>List your property here</strong></legend>
 			 	<label for="country">Country</label>
                 <select class="form-control" id="country" type= "text" name="country" required >
                 <option value="Netherlands">Netherlands</option>
-                </select />
+                </select>
 
 			 	 <label for="state">State</label>
                 <select class="form-control" id="state" name="state" required>
                 <option value="NH">NH</option>
                 <option value="AH">AH</option>
                 <option value="DP">DP</option>
-                </select />
+                </select>
 
 			 	<label for="city">City</label>
                 <select class="form-control" id="city" name="city">
-                <option value="Amsterdam">Amsterdam</option>
-                <option value="Duivendrecht">Duivendrecht</option>
-                <option value="Jordaan">Jordaan</option>
-                <option value="Watergraafsmeer">Watergraafsmeer</option>
-                </select />
+                <option value="Centrem">Centrem</option>
+                <option value="Zuidoost">Zuidoost</option>
+                <option value="Diemen">Diemen</option>
+                </select>
 
 			 	 <label for="street">Street</label>
 			 	 <input id="street" name="street"class="form-control" type="text" >
@@ -81,7 +79,7 @@
 
 
 			 	<label for="rate">Rate Per Day per Person</label>
-			 	<input id="rate" name="rate" class="form-control" type="number" required >
+			 	<input id="rate" name="rate" class="form-control" type="float" required >
 
 				<label for="room_type">Room Type</label>
 				<select class="form-control" id="room_type" name="room_type" required>
@@ -92,7 +90,7 @@
 
 				<label for="bed_type">Bed Type</label>
 				<select class="form-control" id="bed_type" name="bed_type" required>
-					<option value="Real bed">Real bed</option>
+					<option value="Real Bed">Real Bed</option>
                     <option value="Pull-out Sofa">Pull-out Sofa</option>
                     <option value="Futon">Futon</option>
                     <option value="Airbed">Airbed</option>
@@ -100,16 +98,16 @@
 				</select><br />
 
 				<label for="no_bathrooms">Number of Bathrooms</label>
-				<input type="number" value="1" min="1" max="10" id="no_bathrooms" name="no_bathrooms" class="form-control" required >
+				<input type="float" value="1" min="1" max="10" id="no_bathrooms" name="no_bathrooms" class="form-control" required >
 				
-				<label for="no_beds">Number of Bedrooms</label>
-				<input type="number" value="1" min="1" max="10" id="no_beds" name="no_beds" class="form-control" required >
+				<label for="no_bedrooms">Number of Bedrooms</label>
+				<input type="integer" value="1" min="1" max="10" id="no_bedrooms" name="no_bedrooms" class="form-control" required >
 
 				<label for="minimum_stay">Minimum Stay at your property </label>
 				<input type="number" value="1" min="1" max="10" id="minimum_stay" name="minimum_stay" class="form-control" required >
 
 				<label for="capacity">Capacity of the property</label>
-				<input type="number" value="1" min="1" max="10" id='capacity'name="capacity" class="form-control" required >
+				<input type="integer" value="1" min="1" max="5" id='capacity'name="capacity" class="form-control" required >
 
 			<!-- 	<input type="submit" value="Submit now!" /> -->
 
