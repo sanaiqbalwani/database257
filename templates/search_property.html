@@ -11,6 +11,35 @@
     <!-- Bootstrap core CSS -->
     <link href="../static/dist/css/bootstrap.min.css" rel="stylesheet">
      {% include 'header.html' %}
+
+     <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript">
+        var citiesByState = {
+            NH: ["Centrem","Zuidoost","Diemen"],
+            AH: ["Groningen","Haarlem","Zeeburg"],
+            DP: ["Watergang","Landsmeer","Uitdam"]
+        }
+        function makeSubmenu(value) {
+            if(value.length==0) document.getElementById("city").innerHTML = "<option></option>";
+            else {
+                var citiesOptions = "";
+                for(cityId in citiesByState[value]) {
+                    citiesOptions+="<option>"+citiesByState[value][cityId]+"</option>";
+                }
+                document.getElementById("city").innerHTML = citiesOptions;
+            }
+        }
+        function displaySelected() {
+            var state = document.getElementById("state").value;
+            var city = document.getElementById("city").value;
+            alert(state+"\n"+city);
+        }
+        function resetSelection() {
+            document.getElementById("state").selectedIndex = 0;
+            document.getElementById("city").selectedIndex = 0;
+        }
+    </script>
   </head>
     <body >
         <div style="background:transparent !important" class="jumbotron">
@@ -40,22 +69,21 @@
                         </th>
                         <th>
                             <label for="state">State</label>
-                            <select class="form-control" id="state" name="state" type="text">
-                            <option value="NH">NH</option>
-                            <option value="AH">AH</option>
-                            <option value="DP">DP</option>
-                            </select />
+                             <select class="form-control" id="state" onchange="makeSubmenu(this.value)" name="state" type="text">
+                            <option>Select Your State</option>
+                            <option>NH</option>
+                            <option>AH</option>
+                            <option>DP</option>
+                            </select>
                         </th>
                     </tr>
                     <tr>
                         <th>
                             <label for="city">City</label>
                             <select class="form-control" id="city" name="city" type="text">
-                        
-                            <option value="Centrem">Centrem</option>
-                            <option value="Zuidoost">Zuidoost</option>
-                            <option value="Diemen">Diemen</option>
-                            </select />
+                            <option>Select Your City</option>
+                            <option></option>
+                            </select>
                         </th>
                         <th>
                             <label for="street">Street</label>
@@ -149,6 +177,7 @@
             <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
+                <br /><br />
                     <h1><b><strong>Search Result</b></strong></h1>
                     <br />
                 </div>
@@ -194,7 +223,7 @@
                     </table>
                 </div>
                     <div class="form-group">
-
+                <br /><br />
 				<fieldset>
                     <legend><strong>Log in as Guest to book the selected property</strong></legend>
 
