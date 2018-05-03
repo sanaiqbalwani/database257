@@ -15,6 +15,34 @@
     <!-- Bootstrap core CSS -->
     <link href="../static/dist/css/bootstrap.min.css" rel="stylesheet">ß
      {% include 'header.html' %}
+        <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript">
+        var citiesByState = {
+            NH: ["Centrem","Zuidoost","Diemen"],
+            AH: ["Groningen","Haarlem","Zeeburg"],
+            DP: ["Watergang","Landsmeer","Uitdam"]
+        }
+        function makeSubmenu(value) {
+            if(value.length==0) document.getElementById("city").innerHTML = "<option></option>";
+            else {
+                var citiesOptions = "";
+                for(cityId in citiesByState[value]) {
+                    citiesOptions+="<option>"+citiesByState[value][cityId]+"</option>";
+                }
+                document.getElementById("city").innerHTML = citiesOptions;
+            }
+        }
+        function displaySelected() {
+            var state = document.getElementById("state").value;
+            var city = document.getElementById("city").value;
+            alert(state+"\n"+city);
+        }
+        function resetSelection() {
+            document.getElementById("state").selectedIndex = 0;
+            document.getElementById("city").selectedIndex = 0;
+        }
+    </script>
   </head>
     <body >
 
@@ -31,139 +59,6 @@
 		{% endif %}
 
 			<div class="form-group">
-                <fieldset>
-                <font size="+3"><b><strong>Log in as Owner to list your property</b></strong></font>
-                <fieldset>
-                <br />
-                <label for="email">Email id</label>
-		        <input type="email" id="email" class="form-control" name="email" placeholder="Owner Account Email"  required autofocus>
-
-		      	<label for="password">Password</label>
-      			<input type="password" id="password" name="password" class="form-control" placeholder="Owner Account Password"  required>
-     		
-				</fieldset>
-				<br /><br />
-
-				<fieldset>
-                <font size="+3"><b><strong>List Your Property Here</b></strong></font>
-                <fieldset>
-				<br />
-                <fieldset>
-                <font size="+2"><b><strong>Location Choice</b></strong></font>
-                <fieldset>
-                
-
-                <table style="width:100%">
-                    <tr>
-                        <th>
-                            <label for="country">Country</label>
-                            <select class="form-control" id="country" name="country" type="text">
-                            <option value="Netherlands">Netherlands</option>
-                            </select />
-                        </th>
-                        <th>
-                            <label for="state">State</label>
-                             <select class="form-control" id="state" onchange="makeSubmenu(this.value)" name="state" type="text">
-                            <option>Select Your State</option>
-                            <option>NH</option>
-                            <option>AH</option>
-                            <option>DP</option>
-                            </select>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label for="city">City</label>
-                            <select class="form-control" id="city" name="city" type="text">
-                            <option>Select Your City</option>
-                            <option></option>
-                            </select>
-                        </th>
-                        <th>
-                            <label for="street">Street</label>
-                            <input id="street" name="street" class="form-control" type="text">
-                        </th>
-                    </tr>
-                </table>
-                <br />
-                <fieldset>
-                <font size="+2"><b><strong>Property Characteristic</b></strong></font>
-                <fieldset>
-                
-                <table style="width:100%">
-                    <tr>
-                        <th>
-                            <label for="property_type" align="center" >Property Type</label>
-                            <select class="form-control" id="property_type" name="property_type" type="text">
-                                <option value="Any">Any</option>
-                                <option value="House">House</option>
-                                <option value="Cabin">Cabin</option>
-                                <option value="Apartment">Apartment</option>
-                                <option value="Dorm">Dorm</option>
-                            </select>
-                        </th>
-                        <th>
-                            <label for="rate">Max Price Per Day per Person in Dollars</label>
-                            <select class="form-control" id="rate" name="rate" type="float">
-                                <option value="50" >50</option>
-                                <option value="100" >100</option>
-                                <option value="150" >150</option>
-                                <option value="200" >200</option>
-                            </select>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label for="room_type">Room Type</label>
-                            <select class="form-control" id="room_type" name="room_type" type="text">
-                                <option value="Any">Any</option>
-                                <option value="Shared room">Shared room</option>
-                                <option value="Private room">Private room</option>
-                                <option value="Entire home/apt">Entire home/apt</option>
-                        </th>
-                        <th>
-                            <label for="bed_type">Bed Type</label>
-                            <select class="form-control" id="bed_type" name="bed_type" type="text">
-                                <option value="Any">Any</option>
-                                <option value="Real Bed">Real Bed</option>
-                                <option value="Pull-out Sofa">Pull-out Sofa</option>
-                                <option value="Futon">Futon</option>
-                                <option value="Airbed">Airbed</option>
-                                <option value="Couch">Couch</option>
-                            </select>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label for="no_bathrooms">Number of Bathrooms</label>
-                            <input type="float" value="1" min="1" max="10" id="no_bathrooms" name="no_bathrooms" class="form-control">
-                        </th>
-                        <th>
-                           <label for="no_bedrooms">Number of Bedrooms</label>
-                            <input type="integer" value="1" min="1" max="10" id="no_bedrooms" name="no_bedrooms" class="form-control">
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <label for="minimum_stay">Minimum Stay at your property </label>
-                            <input type="integer" value="1" min="1" max="10" id="minimum_stay" name="minimum_stay" class="form-control">
-                        </th>
-                        <th>
-                           <label for="capacity">Capacity of the property</label>
-
-                            <select class="form-control" id="capacity" name="capacity" type="integer">
-                                <option value=1>1</option>
-                                <option value=2>2</option>
-                                <option value=3>3</option>
-                                <option value=4>4</option>
-                                <option value=5>5</option>
-                            </select>
-
-                        </th>
-                    </tr>  
-                </table>
-                <br /><br />
-<!--div class="form-group">
 				<legend align="center"><strong>Log in as Owner to list your property</strong></legend>
 				<fieldset>
 
@@ -183,17 +78,16 @@
                 </select>
 
 			 	 <label for="state">State</label>
-                <select class="form-control" id="state" name="state" required>
-                <option value="NH">NH</option>
-                <option value="AH">AH</option>
-                <option value="DP">DP</option>
+                 <select class="form-control" id="state" onchange="makeSubmenu(this.value)" name="state" type="text">
+                <option>NH</option>
+                <option>AH</option>
+                <option>DP</option>
                 </select>
 
-			 	<label for="city">City</label>
-                <select class="form-control" id="city" name="city">
-                <option value="Centrem">Centrem</option>
-                <option value="Zuidoost">Zuidoost</option>
-                <option value="Diemen">Diemen</option>
+			 	 <label for="city">City</label>
+                <select class="form-control" id="city" name="city" type="text">
+                <option>Select Your City</option>
+                <option></option>
                 </select>
 
 			 	 <label for="street">Street</label>
