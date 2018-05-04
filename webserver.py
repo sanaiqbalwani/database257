@@ -175,6 +175,7 @@ def list_property():
     d["city"] = request.form["city"]
     # allow dot notation in dict above
     d = DotMap(d)
+    print(d)
  
     # 3. Populate tables
     connection = sqlite3.connect('user_new.db')
@@ -184,7 +185,7 @@ def list_property():
         VALUES (?, ?, ?, ?,?)""", [d.country, d.state, d.city, d.street, d.zip_code])
     # c.execute("""SET @last_id = LAST_INSERT_ID()""")
     property_id = c.lastrowid
-    # print(type(property_id))
+    print(property_id)
     c.execute(""" INSERT INTO property (property_id,property_type,rate,room_type,bed_type,no_bathrooms,no_bedrooms,minimum_stay,capacity, host_id)
     VALUES (?, ?, ?, ?,?,?,?,?,?,?)""",
               [property_id, d.property_type, d.rate, d.room_type, d.bed_type, d.no_bathrooms, d.no_bedrooms,
@@ -227,7 +228,7 @@ def search_property():
     WHERE property.property_id IN \
     (SELECT property_id FROM location WHERE state= ? and city= ? and street LIKE ?)\
     and no_bathrooms>=? and no_bedrooms>=? and capacity>=? \
-    and minimum_stay<=? and cast(substr(rate,2) as FLOAT)<= ? \
+    and minimum_stay<=? and cast(rate as FLOAT)<= ? \
     and property_type=? and room_type=? and bed_type=? LIMIT 10"
 
 
