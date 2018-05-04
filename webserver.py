@@ -237,12 +237,13 @@ def search_property():
     optional_fields=[property_type,room_type, bed_type]
 
     print(">>",form_fields)
+    print(">>",optional_fields)
 
 # LIST OF VALUES THAT CAN CHANGE
-    listt=['property_type','bed_type','room_type']
+    listt=['property_type','room_type','bed_type']
     to_remove=[]
 
-    for i,value in enumerate([property_type,room_type,bed_type]):
+    for i,value in enumerate(optional_fields):
         variable_name=listt[i]
         if value=="Any":
             print(variable_name)
