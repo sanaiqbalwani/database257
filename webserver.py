@@ -20,7 +20,7 @@ def create_tables():
     # Create table
     c.execute("""
             CREATE TABLE IF NOT EXISTS location
-            (	property_id integer PRIMARY KEY AUTOINCREMENT, 
+            (	property_id integer , 
                 country text NOT NULL,
                 state text NOT NULL,
                 city text NOT NULL,
@@ -181,15 +181,18 @@ def list_property():
     connection = sqlite3.connect('user_new.db')
     c = connection.cursor()
 
-    c.execute(""" INSERT INTO location (country,state,city,street,zipcode)
-        VALUES (?, ?, ?, ?,?)""", [d.country, d.state, d.city, d.street, d.zip_code])
-    # c.execute("""SET @last_id = LAST_INSERT_ID()""")
+    
+    c.execute(""" INSERT INTO property (property_type,rate,room_type,bed_type,no_bathrooms,no_bedrooms,minimum_stay,capacity, host_id)
+    VALUES ( ?, ?, ?,?,?,?,?,?,?)""",
+              [d.property_type, d.rate, d.room_type, d.bed_type, d.no_bathrooms, d.no_bedrooms,
+               d.minimum_stay, d.capacity, int(host_id)])
+       # c.execute("""SET @last_id = LAST_INSERT_ID()""")
     property_id = c.lastrowid
     print(property_id)
-    c.execute(""" INSERT INTO property (property_id,property_type,rate,room_type,bed_type,no_bathrooms,no_bedrooms,minimum_stay,capacity, host_id)
-    VALUES (?, ?, ?, ?,?,?,?,?,?,?)""",
-              [property_id, d.property_type, d.rate, d.room_type, d.bed_type, d.no_bathrooms, d.no_bedrooms,
-               d.minimum_stay, d.capacity, int(host_id)])
+
+    c.execute(""" INSERT INTO location (property_id,country,state,city,street,zipcode)
+        VALUES (?, ?, ?, ?,?,?)""", [property_id,d.country, d.state, d.city, d.street, d.zip_code])
+ 
 
     connection.commit()
 
@@ -226,9 +229,9 @@ def search_property():
     FROM property join location \
     on property.property_id = location.property_id \
     WHERE property.property_id IN \
-    (SELECT property_id FROM location WHERE state= ? and city= ? and street LIKE ?)\
+    (SELECT location.property_id FROM location WHERE state= ? and city= ? and street LIKE ?)\
     and no_bathrooms>=? and no_bedrooms>=? and capacity>=? \
-    and minimum_stay<=? and cast(rate as FLOAT)<= ? \
+    and minimum_stay<=? and rate<= ? \
     and property_type=? and room_type=? and bed_type=? LIMIT 10"
 
 
@@ -265,7 +268,7 @@ def search_property():
 
 
     # print("check form_fields updated", form_fields)
-    # print(sql_query_string,form_fields)
+    print(sql_query_string,form_fields)
 
     connection = sqlite3.connect('user_new.db')
     c = connection.cursor()
